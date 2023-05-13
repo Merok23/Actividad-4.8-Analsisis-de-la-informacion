@@ -1,5 +1,5 @@
 Feature: Bank account operations
-  Checking bank account operations
+ Checking bank account operations
 
   Scenario: Successfully withdraw money when balance is enough
     Given Account with a balance of 1000
@@ -24,7 +24,7 @@ Feature: Bank account operations
     And Account balance should remain 200
 
 
-Feature: Bank account promo, get 10% extra in your $2000+ deposits, up to $500
+#Feature: Bank account promo, get 10% extra in your $2000+ deposits, up to $500
 
   Scenario: Successfully promo applied, cap not reached.
     Given Account with a balance of 0
