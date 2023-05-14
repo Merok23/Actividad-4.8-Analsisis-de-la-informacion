@@ -79,18 +79,34 @@ public class Memo1BankApp {
 		return accountService.deposit(cbu, sum);
 	}
 
-	@GetMapping("/transactions/{transaction}")
+	@PostMapping("/transaction/{cbu}/{sum}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Account createTransactionDeposit(@PathVariable long cbu, @RequestBody double sum) {
+		return accountService.deposit(cbu, sum);
+	}
+
+	@PostMapping("/transactions/{cbu}/{sum}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Account createTransactionWithdraw(@PathVariable long cbu,@RequestBody double sum) {
+		return accountService.withdraw(cbu, sum);
+	}
+
+	@GetMapping("/transactions")
 	public Transaction getTransaction(@RequestParam Long transactionNumber) {
 		Transaction transaction= transactionService.getTransactionByNumber(transactionNumber);
 		return transaction;
 	}
 
 
+	@GetMapping("/transactions/{cbu}")
+	public Collection<Transaction> getTransactionsByCBU(@RequestParam long cbu) {
+		return transactionService.getTransactionsById(cbu);
+	}
 
-
-
-
-
+	@DeleteMapping("/transactions/{transactionNumber}")
+	public void deleteTransaction(@RequestParam Long transactionNumber) {
+		transactionService.eliminateTransaction(transactionNumber);
+	}
 
 
 

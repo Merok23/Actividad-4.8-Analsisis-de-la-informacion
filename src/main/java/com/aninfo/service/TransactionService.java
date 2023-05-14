@@ -15,9 +15,6 @@ public class TransactionService {
     @Autowired
     private TransactionRepository repository;
 
-    public Transaction createTransactionDeposit(Transaction newTransaction) {
-        return repository.createTransaction(newTransaction);
-    }
 
     public List<Transaction> getTransactionsById(long cbu) {
         return repository.getTransactionsByAccount(cbu);
